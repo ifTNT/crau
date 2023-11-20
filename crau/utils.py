@@ -1,5 +1,6 @@
 import io
 from urllib.parse import urlparse
+from fnmatch import fnmatch
 
 from scrapy.statscollectors import MemoryStatsCollector
 from tqdm import tqdm
@@ -212,7 +213,7 @@ def resource_matches_base_url(absolute_url, allowed):
     parsed_url = urlparse(absolute_url.replace("www.", ""))
     return (
         any(
-            a.netloc == parsed_url.netloc and parsed_url.path.startswith(a.path)
+            fnmatch(parsed_url.netloc, a.netloc) and parsed_url.path.startswith(a.path)
             for a in clean_allowed
         )
         or not allowed
