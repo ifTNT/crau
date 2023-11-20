@@ -43,6 +43,7 @@ EXTRACTORS = [
     Extractor(name="other", type="link", link_type="anchor", xpath="//iframe/@src"),
     Extractor(name="other", type="link", link_type="anchor", xpath="//a/@href"),
     Extractor(name="other", type="link", link_type="anchor", xpath="//area/@href"),
+    Extractor(name="other", type="link", link_type="anchor", xpath="//form/@action"),
     Extractor(
         name="other",
         type="link",
